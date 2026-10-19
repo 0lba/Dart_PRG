@@ -1,6 +1,6 @@
 import 'dart:math';
 
-abstract class Character{
+abstract class Character {
   final String name;
   int hp;
   final int maxHp;
@@ -9,20 +9,23 @@ abstract class Character{
   Character({
     required this.name,
     required this.hp,
-  }): maxHp = hp;
-  void takeDamage(int damage){
+  }) : maxHp = hp;
+  void takeDamage(int damage) {
     hp -= damage;
     if (hp < 0) hp = 0;
   }
+
   bool get isAlive => hp > 0;
-  String get hpBar{
+  String get hpBar {
     int filled = (hp / maxHp * 10).round();
     int empty = 10 - filled;
     return '[${'█' * filled}${'░' * empty}] $hp/$maxHp';
   }
-  void describe(){
+
+  void describe() {
     print('$name $hpBar');
   }
+
   @override
   String toString();
 }
